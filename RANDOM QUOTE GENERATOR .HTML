@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #quote-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 500px;
+    }
+    #text {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #333;
+    }
+    #author {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+    #new-quote {
+      padding: 0.6rem 1.2rem;
+      background: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #new-quote:hover {
+      background: #005a9e;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="quote-box">
+    <div id="text">Loading quote...</div>
+    <div id="author"></div>
+    <button id="new-quote">New Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+      { text: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+      { text: "Life is what happens when you're busy making other plans.", author: "John Lennon" }
+    ];
+
+    const textElement = document.getElementById('text');
+    const authorElement = document.getElementById('author');
+    const button = document.getElementById('new-quote');
+
+    function displayQuote() {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      textElement.textContent = `"${random.text}"`;
+      authorElement.textContent = `— ${random.author}`;
+    }
+
+    button.addEventListener('click', displayQuote);
+    window.onload = displayQuote;
+  </script>
+
+</body>
+</html>
